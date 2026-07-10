@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Launch Engagement Intake",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "name", "delivery_lane"],
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": ["client", "portfolio"],
+      "description": "Engagement type: real client folder or portfolio build."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Engagement or project display name."
+    },
+    "delivery_lane": {
+      "type": "string",
+      "enum": ["tool-built-bi", "software-code", "advisory-only"],
+      "description": "Execution surface. tool-built-bi = ClickUp Portfolio Projects + kit deploy."
+    },
+    "kit": {
+      "type": "string",
+      "description": "Required when delivery_lane is tool-built-bi. Must match a kit manifest name."
+    },
+    "source": {
+      "type": "string",
+      "description": "Required when kind is client. CRM acquisition source (e.g. Upwork)."
+    },
+    "industry": {
+      "type": "string",
+      "default": ""
+    },
+    "engagement_type": {
+      "type": "string",
+      "enum": ["analytics", "automation", "advisory"],
+      "default": "analytics",
+      "description": "Service shape — distinct from delivery_lane (where work executes)."
+    },
+    "data_classification": {
+      "type": "string",
+      "enum": [
+        "synthetic",
+        "public",
+        "internal",
+        "confidential",
+        "financial",
+        "phi"
+      ],
+      "description": "Defaults to internal (client) or synthetic (portfolio)."
+    },
+    "deliverables": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": ["Dashboard"]
+    },
+    "project_path": {
+      "type": "string",
+      "description": "Relative vault path. Defaults to 02_Clients/<name> or 04_Portfolio/<name>."
+    },
+    "starting_phase": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9,
+      "default": 0,
+      "description": "Resume point. Validator checks prior-phase artifacts exist."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "prospect",
+        "proposal-sent",
+        "active",
+        "delivered",
+        "dormant"
+      ],
+      "description": "Client CRM status. Defaults to prospect (client) or active (portfolio)."
+    },
+    "include_portfolio_readout": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, portfolio builds keep Phase 7 (readout / case-study pass)."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "delivery_lane": { "const": "tool-built-bi" } } },
+      "then": { "required": ["kit"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "client" } } },
+      "then": { "required": ["source"] }
+    }
+  ]
+}

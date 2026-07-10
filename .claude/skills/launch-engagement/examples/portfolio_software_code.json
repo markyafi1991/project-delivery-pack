@@ -1,0 +1,7 @@
+{
+  "kind": "portfolio",
+  "name": "Reporting Robot",
+  "delivery_lane": "software-code",
+  "engagement_type": "automation",
+  "deliverables": ["Python reporting pipeline"]
+}

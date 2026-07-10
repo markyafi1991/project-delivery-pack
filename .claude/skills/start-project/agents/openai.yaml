@@ -1,0 +1,4 @@
+interface:
+  display_name: "Start Project"
+  short_description: "Create a project and generate its SOP runbook"
+  default_prompt: "Use $start-project to create a new client engagement or portfolio project and generate its applicable SOP runbook."

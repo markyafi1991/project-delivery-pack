@@ -1,0 +1,10 @@
+{
+  "kind": "portfolio",
+  "name": "Variance Pack",
+  "delivery_lane": "tool-built-bi",
+  "kit": "Power BI Project Kit",
+  "industry": "Fund administration",
+  "engagement_type": "analytics",
+  "project_path": "04_Portfolio/PowerBI_Variance_Pack",
+  "deliverables": ["Power BI dashboard"]
+}

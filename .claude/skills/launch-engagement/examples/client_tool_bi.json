@@ -1,0 +1,12 @@
+{
+  "kind": "client",
+  "name": "Acme Funds",
+  "delivery_lane": "tool-built-bi",
+  "kit": "Power BI Project Kit",
+  "source": "Upwork",
+  "industry": "Fund administration",
+  "engagement_type": "analytics",
+  "data_classification": "financial",
+  "status": "prospect",
+  "deliverables": ["Executive dashboard"]
+}
