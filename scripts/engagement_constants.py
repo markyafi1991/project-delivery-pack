@@ -30,5 +30,19 @@ WORK_SURFACES = {
 SOFTWARE_CODE_SKIP_PHASES = frozenset({3, 4, 5, 6})
 ADVISORY_ONLY_SKIP_PHASES = frozenset({3, 4, 5})
 
+# --- Extract limitation: engagement state is a single shared file -------------------
+# The two constants below resolve to ONE shared state file per checkout. That is enough
+# for the single-engagement walkthrough this public extract ships (intake + Phase 0), but
+# it does not survive concurrency: two engagements run against the same checkout write to
+# the same path, and the second overwrites the first.
+#
+# The private tree supersedes this with per-engagement state — one file per engagement
+# under a state directory, named from a 16-hex-character digest of the engagement
+# identity, alongside an index file, at schema version 2 — specifically so that no
+# engagement can clobber another. That change is not part of this extract.
+#
+# So: the shared singleton below is a known property of the extract, not the current
+# design. Stated plainly rather than hidden. Do not add a second consumer on the
+# assumption that this path is already scoped per engagement.
 STATE_DIR = ".cache/launch-engagement"
 STATE_FILENAME = "state.json"

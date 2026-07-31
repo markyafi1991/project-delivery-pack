@@ -3,6 +3,17 @@ name: launch-engagement
 description: Orchestrate a full AI/BI client or portfolio engagement by chaining the Project Delivery skill pack — scaffold, discovery, KPI design, kit deploy, build runbook, QA, readout, and close. Use when the user says "/launch-engagement", "launch engagement", "run the full project", "walk me through the engagement", "start to finish on this project", or wants the complete project-delivery chain instead of a single skill. Business-scoped — never reads 09_Job_Search or 10_Personal. Composes with /start-project, /project-kit, and the engagement template; does not replace them.
 ---
 
+> **Extract note.** This is the public, sanitized copy of the `launch-engagement`
+> orchestrator — a **specification**, not the full private implementation. Below this note it
+> carries 215 lines of specification against 667 in the private tree, and it *summarises*
+> Phases 3–9 rather than shipping their gate machinery. The runnable code published
+> alongside it covers the **intake pipeline and Phase 0** only. References below to
+> `NN_Area/` paths, `[[wikilinks]]`, SOPs, templates, and sibling skills point at notes in
+> the private vault and are intentionally not resolvable here. This is also the more stale
+> of the two public copies of this skill; the companion
+> `launch-engagement-automation` repository carries the closer-to-current version. Product
+> status: **Beta** — built and reviewed, not yet run end to end on a live engagement.
+
 ## Before proceeding
 
 Read `01_Operations/Skill Notes/launch-engagement - Owner Notes.md` if it exists, and
