@@ -1,5 +1,7 @@
 # Project Delivery Pack
 
+> **2026-11-13 evidence update:** [Current delivery evidence](docs/current-evidence.md) is maintained in the companion engine repository. This historical pack retains its stated runnable limits. No v1 shipment is implied.
+
 A set of composable [Claude Code](https://docs.claude.com/en/docs/claude-code) skills that specify an AI/BI consulting engagement end-to-end — from intake to closeout — and run its front end as a **step-by-step orchestrator over deterministic Python tooling**.
 
 The design principle throughout: an LLM decides *what* to do at each seam, but the *validation, path safety, command construction, and state* are handled by plain, tested Python — not left to prompt judgment. In this repository that principle is implemented in code for **the intake pipeline and Phase 0**: those gates are enforced in Python and covered by tests. The later phases are specified in the skill documents and executed by an agent against those specifications; they do not ship here as runnable gate machinery. See [Scope of this extract](#scope-of-this-extract) for the exact line between the two.
